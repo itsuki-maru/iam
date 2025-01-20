@@ -70,7 +70,7 @@ tr:nth-child(even) {
 @media (max-width: 768px) {
     table {
         width: 100%;
-        font-size: 0.9em;
+        font-size: 0.8em;
     }
 }
 

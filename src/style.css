@@ -68,14 +68,19 @@ button:focus-visible {
   #app {
     max-width: 100%;
   }
+
   h1 {
     font-size: 2.5em;
   }
+
   h2 {
     font-size: 1.4em;
   }
+
   .container {
     margin-top: 2%;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 

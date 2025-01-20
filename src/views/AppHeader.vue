@@ -94,7 +94,8 @@ getTitleHeader();
 
 @media (max-width: 768px) {
   .nav-menu li {
-    font-size: 0.8em;
+    font-size: 0.9em;
+    min-width: 80px;
   }
 }
 </style>

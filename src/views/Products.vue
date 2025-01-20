@@ -38,7 +38,7 @@ const productDataRef = ref(productList);
             <h2>{{ pageTitle }}</h2>
             <div id="main-zone">
                 <div class="message-zone" v-for="message in pageMessage">
-                    <p >{{ message }}</p>
+                    <p>{{ message }}</p>
                 </div>
                 <div id="image-zone">
                     <img id="main-image" :src="pageImage" alt="">
@@ -159,6 +159,10 @@ const productDataRef = ref(productList);
 }
 
 @media (max-width: 768px) {
+    .message-zone {
+        font-size: 0.9em;
+    }
+
     #card-1 {
         margin-top: 150px;
     }
