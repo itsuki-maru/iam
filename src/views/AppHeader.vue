@@ -91,4 +91,10 @@ getTitleHeader();
   color: #c0ab72;
   border-bottom: 2px solid #d4bc7a;
 }
+
+@media (max-width: 768px) {
+  .nav-menu li {
+    font-size: 0.8em;
+  }
+}
 </style>

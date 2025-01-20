@@ -163,6 +163,10 @@ const productDataRef = ref(productList);
         margin-top: 150px;
     }
 
+    .card {
+        margin-top: 20px;
+    }
+
     .card.slide-left {
         height: auto;
     }

@@ -109,5 +109,13 @@ onMounted(() => {
     bottom: 0;
     right: 0;
   }
+
+  .logo-image {
+    width: 80px;
+  }
+  
+  #splash-title {
+    font-size: 1.8rem;
+  }
 }
 </style>
