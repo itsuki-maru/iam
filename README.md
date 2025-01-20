@@ -87,6 +87,7 @@
 2. **Dockerfileをビルド**:
    
     ```bash
+    cd iam
     docker build -t iam-nginx-app .
    ```
 
