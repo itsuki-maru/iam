@@ -28,16 +28,53 @@ onMounted(() => {
         homeRedirect();
     }, 1800);
 });
+
+const theme = ref(localStorage.getItem("theme") || "light");
+
+// テーマ切替
+function setTheme(newTheme: string) {
+  theme.value = newTheme;
+  
+  // 明示的なテーマの属性変更
+  document.documentElement.setAttribute("data-theme", newTheme);
+
+  // ローカルストレージに保存
+  localStorage.setItem("theme", newTheme);
+}
+
+onMounted(() => {
+  // 初期設定
+  setTheme(theme.value);
+});
 </script>
 
 <template>
   <div id="app-header">
     <AppHeader/>
   </div>
+
   <div v-if="showSplashScreen" id="splash-screen">
     <img :src="appLogo" alt="App Logo" class="logo-image">
     <h1 id="splash-title">{{ appTitle }}</h1>
   </div>
+
+  <div id="theme-change-btn">
+    <img
+        v-if="theme === 'dark'"
+        src="/light.png"
+        alt="ダークテーマ"
+        class="change-thema-img btn-img"
+        title="ライトテーマへ切り替え"
+        v-on:click="setTheme('light')">
+    <img
+        v-else-if="theme === 'light'"
+        src="/dark.png"
+        alt="ライトテーマ"
+        class="change-thema-img btn-img"
+        title="ダークテーマへ切り替え"
+        v-on:click="setTheme('dark')">
+  </div>
+
   <div id="main-contents">
     <RouterView/>
   </div>
@@ -85,7 +122,34 @@ onMounted(() => {
   z-index: 1000;
   border: none;
   box-shadow: none;
+}
 
+#theme-change-btn {
+  top: 1%;
+  right: 1%;
+}
+
+.change-thema-img {
+  width: 30px;
+  position: fixed;
+  top: 2%;
+  right: 1%;
+  padding: 10px 7px;
+  text-decoration: none;
+  border: 1px;
+  border-radius: 20px;
+  transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-duration: .5s;
+  -webkit-transition-duration: .5s;
+  margin: 5px 5px 10px 5px;
+}
+
+.btn-img {
+    border: none;
+    box-shadow: none;
+    max-width: 100%;
+    background: transparent;
 }
 
 @keyframes fade-in {

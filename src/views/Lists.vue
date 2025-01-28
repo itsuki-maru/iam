@@ -54,6 +54,64 @@ const toggleList = (category: string) => {
 </template>
 
 <style scoped>
+@media (prefers-color-scheme: light) {
+    .list-category button {
+        background-color: #e3e3e3;
+    }
+    
+    .list-category button:hover {
+        background-color: #cdcdcd;
+    }
+    
+    .list-category .list-list li {
+        background-color: #efefef;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .list-category button {
+        background-color: #313131;
+    }
+    
+    .list-category button:hover {
+        background-color: #1a1a1a;
+    }
+    
+    .list-category .list-list li {
+        background-color: #0e0e0e;
+    }
+}
+
+[data-theme="light"] {
+    .list-category button {
+        color: #1a1a1a;
+        background-color: #e3e3e3;
+    }
+    
+    .list-category button:hover {
+        background-color: #cdcdcd;
+    }
+    
+    .list-category .list-list li {
+        background-color: #efefef;
+    }
+}
+
+[data-theme="dark"] {
+    .list-category button {
+        color: #f0f0f0;
+        background-color: #313131;
+    }
+    
+    .list-category button:hover {
+        background-color: #1a1a1a;
+    }
+    
+    .list-category .list-list li {
+        background-color: #0e0e0e;
+    }
+}
+
 .lists-container {
     display: flex;
     flex-direction: column;
@@ -71,13 +129,11 @@ const toggleList = (category: string) => {
   margin: 10px;
   padding: 10px 20px;
   border: none;
-  background-color: #313131;
   cursor: pointer;
   transition: 0.5s;
 }
 
 .list-category button:hover {
-  background-color: #1a1a1a;
   transition-duration: .5s;
   -webkit-transition-duration: .5s;
 }
@@ -93,7 +149,6 @@ const toggleList = (category: string) => {
 }
 
 .list-category .list-list li {
-    background-color: #0e0e0e;
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -116,20 +171,6 @@ const toggleList = (category: string) => {
 
     .list-category {
         margin: 0 20px;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    .list-category button {
-        background-color: #e3e3e3;
-    }
-    
-    .list-category button:hover {
-        background-color: #cdcdcd;
-    }
-    
-    .list-category .list-list li {
-        background-color: #efefef;
     }
 }
 </style>

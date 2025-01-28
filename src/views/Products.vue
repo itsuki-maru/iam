@@ -64,6 +64,103 @@ const productDataRef = ref(productList);
 </template>
 
 <style scoped>
+@media (prefers-color-scheme: light) {
+    .card {
+        box-shadow: 0 4px 8px #e7e7e7;
+        background-color: #f3f3f3;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 30px 0 #a3a3a3;
+    }
+
+    .card img {
+        border: 1px solid #5f5f5f;
+        box-shadow: 3px 3px 5px 0 rgba(197, 197, 197, 0.5);
+    }
+
+    .card-title {
+        color: #213547;
+    }
+
+    .card-body {
+        color: #213547;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #363636;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 30px 0 #494949;
+    }
+
+    .card img {
+        border: 1px solid #353535;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .card-title {
+        color: #fff;
+    }
+
+    .card-body {
+        color: #ccc;
+    }
+}
+
+[data-theme="light"] {
+    .card {
+        box-shadow: 0 4px 8px #e7e7e7;
+        background-color: #f3f3f3;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 30px 0 #a3a3a3;
+    }
+
+    .card img {
+        border: 1px solid #5f5f5f;
+        box-shadow: 3px 3px 5px 0 rgba(197, 197, 197, 0.5);
+    }
+
+    .card-title {
+        color: #213547;
+    }
+
+    .card-body {
+        color: #213547;
+    }
+}
+
+[data-theme="dark"] {
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: #363636;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 30px 0 #494949;
+    }
+
+    .card img {
+        border: 1px solid #353535;
+        box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .card-title {
+        color: #fff;
+    }
+
+    .card-body {
+        color: #ccc;
+    }
+}
+
+
 #image-zone {
     position: relative;
     overflow: hidden;
@@ -82,8 +179,6 @@ const productDataRef = ref(productList);
 
 .card {
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #363636;
     border-radius: 8px;
     text-align: center;
     margin-top: 80px;
@@ -91,11 +186,9 @@ const productDataRef = ref(productList);
 
 .card-title {
     margin: 10px 0;
-    color: #fff;
 }
 
 .card:hover {
-    box-shadow: 0 8px 30px 0 #494949;
     transition-duration: .5s;
     -webkit-transition-duration: .5s;
 }
@@ -103,15 +196,12 @@ const productDataRef = ref(productList);
 .card img {
     background-color: transparent;
     margin: 20px auto;
-    border: 1px solid #353535;
     border-radius: 3px;
-    box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
     max-width: 100%;
 }
 
 .card-body {
     padding: 10px;
-    color: #ccc;
 }
 
 @media (min-width: 768px) {
@@ -199,30 +289,6 @@ const productDataRef = ref(productList);
     .card-li {
         font-size: 0.9em;
         text-align: center;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    .card {
-        box-shadow: 0 4px 8px #e7e7e7;
-        background-color: #f3f3f3;
-    }
-
-    .card:hover {
-        box-shadow: 0 8px 30px 0 #a3a3a3;
-    }
-
-    .card img {
-        border: 1px solid #5f5f5f;
-        box-shadow: 3px 3px 5px 0 rgba(197, 197, 197, 0.5);
-    }
-
-    .card-title {
-        color: #213547;
-    }
-
-    .card-body {
-        color: #213547;
     }
 }
 </style>
