@@ -29,7 +29,7 @@ onMounted(() => {
     }, 1800);
 });
 
-const theme = ref(localStorage.getItem("theme") || "light");
+const theme = ref(localStorage.getItem("theme") || "dark");
 
 // テーマ切替
 function setTheme(newTheme: string) {
