@@ -41,7 +41,7 @@ getTitleHeader();
 
 <template>
     <!-- Header -->
-     <header>
+    <header>
         <div class="nav-menu">
             <h1 class="logo">{{ appTitle }}</h1>
             <nav>
@@ -53,7 +53,7 @@ getTitleHeader();
                 </ul>
             </nav>
         </div>
-     </header>
+    </header>
 </template>
 
 <style scoped>

@@ -18,7 +18,7 @@ getTitle();
 
 <template>
     <!-- Home Section -->
-     <section id="home" class="home">
+    <section id="home" class="home">
         <div class="container">
             <h2>{{ pageTitle }}</h2>
             <div id="main-zone">
@@ -31,7 +31,7 @@ getTitle();
                 </div>
             </div>
         </div>
-     </section>
+    </section>
 </template>
 
 <style scoped>

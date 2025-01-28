@@ -24,9 +24,9 @@ getTitle();
 const productDataStore = useProductStore();
 productDataStore.initList();
 const productList = computed(
-  (): Map<number, Product> => {
-    return productDataStore.productList;
-  }
+    (): Map<number, Product> => {
+        return productDataStore.productList;
+    }
 );
 
 const productDataRef = ref(productList);

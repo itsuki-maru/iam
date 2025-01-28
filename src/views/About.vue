@@ -15,9 +15,9 @@ getTitle();
 const aboutDataStore = useAboutStore();
 aboutDataStore.initList();
 const aboutList = computed(
-  (): Map<number, About> => {
-    return aboutDataStore.aboutList;
-  }
+    (): Map<number, About> => {
+        return aboutDataStore.aboutList;
+    }
 );
 
 const aboutListRef = ref(aboutList);

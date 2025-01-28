@@ -16,9 +16,9 @@ getTitle();
 const listDataStore = useListStore();
 listDataStore.initList();
 const listList = computed(
-  (): Map<number, List> => {
-    return listDataStore.listList;
-  }
+    (): Map<number, List> => {
+        return listDataStore.listList;
+    }
 );
 
 const listListRef = ref(listList);
@@ -126,16 +126,16 @@ const toggleList = (category: string) => {
 }
 
 .list-category button {
-  margin: 10px;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  transition: 0.5s;
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 .list-category button:hover {
-  transition-duration: .5s;
-  -webkit-transition-duration: .5s;
+    transition-duration: .5s;
+    -webkit-transition-duration: .5s;
 }
 
 .list-category .list-list {
@@ -155,12 +155,12 @@ const toggleList = (category: string) => {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.1s;
+    transition: opacity 0.1s;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-  opacity: 0;
+    opacity: 0;
 }
 
 @media (max-width: 768px) {
