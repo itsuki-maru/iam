@@ -37,6 +37,13 @@ const routeSettings: RouteRecordRaw[] = [
             return import("@/views/About.vue");
         }
     },
+    {
+        path: "/contact",
+        name: "contact",
+        component: () => {
+            return import("@/views/Contact.vue");
+        }
+    },
 ];
 
 const router = createRouter({

@@ -26,3 +26,4 @@ dist-ssr
 # Users
 .env
 tsconfig.app.tsbuildinfo
+config.json

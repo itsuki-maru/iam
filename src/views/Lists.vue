@@ -1,25 +1,30 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import type { List } from "@/interface";
-import { useListStore } from "@/stores/lists";
-import { importJson } from "@/settings";
+import { jsonConfig } from "@/config";
 
 
-const pageTitle = ref("");
-const getTitle = async () => {
-    const titleData = await importJson("list");    
-    pageTitle.value = titleData["title"];
-}
-getTitle();
+const listData = jsonConfig["list"];
+const pageTitle = ref<string>(listData["title"]);
 
+function createData(): Map<number, List> {
+    const data = jsonConfig["list"];
+    let newData = new Map<number, List>();
 
-const listDataStore = useListStore();
-listDataStore.initList();
-const listList = computed(
-    (): Map<number, List> => {
-        return listDataStore.listList;
+    let id = 1;
+
+    for (let item of data["lists"]) {
+        newData.set(id, {
+            id: id,
+            name: item.name,
+            items: item.items,
+        });
+        id++;
     }
-);
+    return newData;
+}
+
+const listList = createData();
 
 const listListRef = ref(listList);
 const opendCategories = ref<string[]>([]);

@@ -18,6 +18,10 @@
         "head4": {
             "title": "タイトル4",
             "isShow": true
+        },
+        "head5": {
+            "title": "タイトル5",
+            "isShow": true
         }
     },
     "home": {
@@ -126,6 +130,18 @@
                 "key": "項目2",
                 "value": "内容2"
             }
+        ]
+    },
+    "contact": {
+        "title": "問い合わせ",
+        "postUrl": "http://localhost:3000/contact",
+        "postcomplateMessage": "お問い合わせありがとうございました。",
+        "form": [
+            { "name": "name", "label": "氏名", "placeholder": "お名前を入力してください。", "type": "textbox" },
+            { "name": "email", "label": "メールアドレス", "placeholder": "メールアドレスを入力", "type": "email" },
+            { "name": "sex", "label": "性別", "placeholder": "性別を選択してください。", "type": "select", "selects": ["男性", "女性", "その他"] },
+            { "name": "age", "label": "年齢", "placeholder": "年齢を入力してください。", "type": "number"},
+            { "name": "detail", "label": "お問い合わせ内容", "placeholder": "お問い合わせ内容を入力してください。", "type": "textarea" }
         ]
     }
 }

@@ -1,34 +1,39 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import type { Product } from "@/interface";
-import { useProductStore } from "@/stores/products";
-import { importJson } from "@/settings";
+import { jsonConfig } from "@/config";
 
 
-const contactEmailAddress = ref("");
-const pageTitle = ref("");
-const pageMessage = ref([]);
-const pageImage = ref("");
-const mailHTMLText = ref("");
-const getTitle = async () => {
-    const titleData = await importJson("product");    
-    pageTitle.value = titleData["title"];
-    pageMessage.value = titleData["message"];
-    pageImage.value = titleData["imageUrl"];
+const productData = jsonConfig["product"];
+const pageTitle = ref<string>(productData["title"]);
+const pageMessage = ref<string[]>(productData["message"]);
+const pageImage = ref<string>(productData["imageUrl"]);
+const contactEmailAddress = ref<string>(jsonConfig["contactEmailAddress"]);
+const mailHTMLText = ref<string>(`mailto:${contactEmailAddress.value}?subject=問い合わせ&body=問い合わせ内容を記載してください。`);
 
-    contactEmailAddress.value = await importJson("contactEmailAddress");
-    mailHTMLText.value = `mailto:${contactEmailAddress.value}?subject=問い合わせ&body=問い合わせ内容を記載してください。`;
-}
-getTitle();
+function createData(): Map<number, Product> {
+    const data = jsonConfig["product"];
+    let newData = new Map<number, Product>();
 
-const productDataStore = useProductStore();
-productDataStore.initList();
-const productList = computed(
-    (): Map<number, Product> => {
-        return productDataStore.productList;
+    let id = 1;
+
+    for (let item of data["products"]) {
+        newData.set(id, {
+            id: id,
+            productName: item.productName,
+            imageUrl: item.imageUrl,
+            productDetail: item.productDetail,
+            productDetailMessage: item.productDetailMessage,
+            productLink: item.productLink,
+            productLinkText: item.productLinkText,
+            productLinkIsBlank: item.productLinkIsBlank,
+        });
+        id++;
     }
-);
+    return newData;
+}
 
+const productList = createData();
 const productDataRef = ref(productList);
 </script>
 

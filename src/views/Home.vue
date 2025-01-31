@@ -1,19 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { importJson } from "@/settings";
+import { jsonConfig } from "@/config";
 
-const pageTitle = ref("");
-const pageMessage = ref([]);
-const productLinkText = ref("");
-const pageImage = ref("");
-const getTitle = async () => {
-    const titleData = await importJson("home");    
-    pageTitle.value = titleData["title"];
-    pageMessage.value = titleData["message"];
-    productLinkText.value = titleData["productLinkText"]
-    pageImage.value = titleData["imageUrl"];
-}
-getTitle();
+
+const homeData = jsonConfig["home"];
+const pageTitle = ref<string>(homeData["title"]);
+const pageMessage = ref<string[]>(homeData["message"]);
+const productLinkText = ref<string>(homeData["productLinkText"]);
+const pageImage = ref<string>(homeData["imageUrl"]);
+
 </script>
 
 <template>

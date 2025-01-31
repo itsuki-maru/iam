@@ -1,42 +1,26 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { importJson } from "@/settings";
+import type { Headers } from "@/interface";
+import { jsonConfig } from "@/config";
 
 
-const appTitle = ref("");
-const headersData = ref(null);
-const head1Title = ref("");
-const head1IsShow = ref(false);
-const head2Title = ref("");
-const head2IsShow = ref(false);
-const head3Title = ref("");
-const head3IsShow = ref(false);
-const head4Title = ref("");
-const head4IsShow = ref(false);
+const appTitle = ref<string>(jsonConfig["appTitle"]);
+const headersData = ref<Headers>(jsonConfig["headers"]);
 
-const getTitleHeader = async () => {
-  headersData.value = await importJson("headers");
-  appTitle.value = await importJson("appTitle");
+const head1Title = ref<string>(headersData.value["head1"]["title"]);
+const head1IsShow = ref<boolean>(headersData.value["head1"]["isShow"]);
 
-  if (headersData.value === null) {
-    return;
-  }
+const head2Title = ref<string>(headersData.value["head2"]["title"]);
+const head2IsShow = ref<boolean>(headersData.value["head2"]["isShow"]);
 
-  head1Title.value = headersData.value["head1"]["title"];
-  head1IsShow.value = headersData.value["head1"]["isShow"];
+const head3Title = ref<string>(headersData.value["head3"]["title"]);
+const head3IsShow = ref<boolean>(headersData.value["head3"]["isShow"]);
 
-  head2Title.value = headersData.value["head2"]["title"];
-  head2IsShow.value = headersData.value["head2"]["isShow"];
+const head4Title = ref<string>(headersData.value["head4"]["title"]);
+const head4IsShow = ref<boolean>(headersData.value["head4"]["isShow"]);
 
-  head3Title.value = headersData.value["head3"]["title"];
-  head3IsShow.value = headersData.value["head3"]["isShow"];
-
-  head4Title.value = headersData.value["head4"]["title"];
-  head4IsShow.value = headersData.value["head4"]["isShow"];
-}
-getTitleHeader();
-
-
+const head5Title = ref<string>(headersData.value["head5"]["title"]);
+const head5IsShow = ref<boolean>(headersData.value["head5"]["isShow"]);
 </script>
 
 <template>
@@ -50,6 +34,7 @@ getTitleHeader();
                     <li v-if="head2IsShow"><RouterLink active-class="active-tab" to="/product">{{ head2Title }}</RouterLink></li>
                     <li v-if="head3IsShow"><RouterLink active-class="active-tab" to="/list">{{ head3Title }}</RouterLink></li>
                     <li v-if="head4IsShow"><RouterLink active-class="active-tab" to="/about">{{ head4Title }}</RouterLink></li>
+                    <li v-if="head5IsShow"><RouterLink active-class="active-tab" to="/contact">{{ head5Title }}</RouterLink></li>
                 </ul>
             </nav>
         </div>

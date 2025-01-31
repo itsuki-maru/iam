@@ -3,18 +3,11 @@ import AppHeader from "./views/AppHeader.vue";
 import AppFooter from "./views/AppFooter.vue";
 import { useRouter } from 'vue-router';
 import { ref, onMounted } from 'vue';
-import { setTitle, importJson } from "@/settings";
+import { jsonConfig } from "./config";
 
 
-const appTitle = ref("");
-const appLogo = ref("");
-const getLogoTitle = async () => {
-  appLogo.value = await importJson("appLogo");
-  const title = await importJson("appTitle");
-  appTitle.value = title;
-  setTitle(title);
-}
-getLogoTitle();
+const appTitle = ref<string>(jsonConfig["appTitle"]);
+const appLogo = ref<string>(jsonConfig["appLogo"]);
 
 const router = useRouter();
 const homeRedirect = (): void => {

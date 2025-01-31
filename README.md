@@ -58,7 +58,11 @@
     npm install
     ```
 
-3. **開発起動：**
+3. **設定ファイルの用意：**
+    
+    設定ファイルを用意します。まずは、プロジェクトディレクトリ直下に用意されている `config.example.json` というファイルの名前を`config.json`に変更します。
+
+4. **開発起動：**
 
     まずは開発起動で初期ページを確認します。
     ```shell
@@ -104,17 +108,16 @@ docker build -t iam-nginx-app . && docker run -d -p 80:80 --name iam iam-nginx-a
 
 ## 設定ファイル-config.json-
 
-特に目新しい仕組みではないですが、コンテンツをHTMLやコンポーネント内にハードコーディングせず、`config.json`という外部ファイルから動的にロードしています。
+特に目新しい仕組みではないですが、コンテンツをHTMLやコンポーネント内にハードコーディングせず、`config.json`という外部ファイルからロードし、静的にビルドします。
 
 ```bash
 iam
- ├─public
- │  ├─ config.json
+ ├─ config.json
 ```
 
 これにより、ポートフォリオだけでなく一時的な特設サイトなども簡単です。
 
-また、画像ファイルなども `public` 配下に保存することで `/example.png` といった形でアクセス可能となります。
+また、画像ファイルなどは `public` 配下に保存することで `/example.png` といった形でアクセス可能となります。
 
 設定ファイルの校正は次のとおりです。
 
@@ -163,6 +166,10 @@ iam
         },
         "head4": {
             "title": "タイトル4",
+            "isShow": true
+        },
+        "head5": {
+            "title": "タイトル5",
             "isShow": true
         }
     },
@@ -315,7 +322,36 @@ iam
 }
 ```
 
-### 6. 設定ファイル全体
+### 6. contactタブコンテンツの設定
+
+`/contact` ルーティング内のコンテンツで、動的に入力フォームが生成されるタブコンテンツです。
+
+![iam_13](./readme-images/iam_13.png)
+
+#### 設定項目
+
+- **title**: ページのタイトル
+- **postUrl**: フォームの送信先サーバーを指定。
+- **postcomplateMessage**: 送信後のメッセージ。
+- **form**: 生成するフォームの設定
+    - テキストボックス、メールアドレス、セレクトボックス、数値入力、テキストエリアが使用可能
+
+```json
+"contact": {
+    "title": "問い合わせ",
+    "postUrl": "http://localhost:3000/contact",
+    "postcomplateMessage": "お問い合わせありがとうございました。",
+    "form": [
+        { "name": "name", "label": "氏名", "placeholder": "お名前を入力してください。", "type": "textbox" },
+        { "name": "email", "label": "メールアドレス", "placeholder": "メールアドレスを入力", "type": "email" },
+        { "name": "sex", "label": "性別", "placeholder": "性別を選択してください。", "type": "select", "selects": ["男性", "女性", "その他"] },
+        { "name": "age", "label": "年齢", "placeholder": "年齢を入力してください。", "type": "number"},
+        { "name": "detail", "label": "お問い合わせ内容", "placeholder": "お問い合わせ内容を入力してください。", "type": "textarea" }
+    ]
+}
+```
+
+### 7. 設定ファイル全体
 
 最後に `config.json` の全体像です。
 
@@ -339,6 +375,10 @@ iam
         },
         "head4": {
             "title": "タイトル4",
+            "isShow": true
+        },
+        "head5": {
+            "title": "タイトル5",
             "isShow": true
         }
     },
@@ -386,6 +426,19 @@ iam
                 "productLink": "/contact",
                 "productLinkText": "お問い合わせはこちらから",
                 "productLinkIsBlank": false
+            },
+            {
+                "productName": "コンテンツ名3",
+                "imageUrl": "/project-sample3.png",
+                "productDetail": "コンテンツの見出し",
+                "productDetailMessage": [
+                    "メッセージ1行目",
+                    "メッセージ2行目",
+                    "メッセージ3行目"
+                ],
+                "productLink": "/contact",
+                "productLinkText": "お問い合わせはこちらから",
+                "productLinkIsBlank": false
             }
         ]
     },
@@ -394,6 +447,26 @@ iam
         "lists": [
             {
                 "name": "区分1",
+                "items": [
+                    "名称1",
+                    "名称2",
+                    "名称3",
+                    "名称4",
+                    "名称5"
+                ]
+            },
+            {
+                "name": "区分2",
+                "items": [
+                    "名称1",
+                    "名称2",
+                    "名称3",
+                    "名称4",
+                    "名称5"
+                ]
+            },
+            {
+                "name": "区分3",
                 "items": [
                     "名称1",
                     "名称2",
@@ -415,6 +488,18 @@ iam
                 "key": "項目2",
                 "value": "内容2"
             }
+        ]
+    },
+    "contact": {
+        "title": "問い合わせ",
+        "postUrl": "http://localhost:3000/contact",
+        "postcomplateMessage": "お問い合わせありがとうございました。",
+        "form": [
+            { "name": "name", "label": "氏名", "placeholder": "お名前を入力してください。", "type": "textbox" },
+            { "name": "email", "label": "メールアドレス", "placeholder": "メールアドレスを入力", "type": "email" },
+            { "name": "sex", "label": "性別", "placeholder": "性別を選択してください。", "type": "select", "selects": ["男性", "女性", "その他"] },
+            { "name": "age", "label": "年齢", "placeholder": "年齢を入力してください。", "type": "number"},
+            { "name": "detail", "label": "お問い合わせ内容", "placeholder": "お問い合わせ内容を入力してください。", "type": "textarea" }
         ]
     }
 }

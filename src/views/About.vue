@@ -1,24 +1,30 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import type { About } from "@/interface";
-import { useAboutStore } from "@/stores/abouts";
-import { importJson } from "@/settings";
+import { jsonConfig } from "@/config";
 
 
-const pageTitle = ref("");
-const getTitle = async () => {
-    const titleData = await importJson("about");    
-    pageTitle.value = titleData["title"];
-}
-getTitle();
+const titleData = jsonConfig["about"];
+const pageTitle = ref<string>(titleData["title"]);
 
-const aboutDataStore = useAboutStore();
-aboutDataStore.initList();
-const aboutList = computed(
-    (): Map<number, About> => {
-        return aboutDataStore.aboutList;
+function createData(): Map<number, About> {
+    const data = jsonConfig["about"];
+    let newData = new Map<number, About>();
+
+    let id = 1;
+
+    for (let item of data["abouts"]) {
+        newData.set(id, {
+            id: id,
+            key: item.key,
+            value: item.value
+        });
+        id++;
     }
-);
+    return newData;
+}
+
+const aboutList = createData();
 
 const aboutListRef = ref(aboutList);
 </script>
