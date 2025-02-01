@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Product } from "@/interface";
+import type { Product, ProductLists } from "@/interface";
 import { jsonConfig } from "@/config";
 
 
@@ -11,9 +11,10 @@ const pageImage = ref<string>(productData["imageUrl"]);
 const contactEmailAddress = ref<string>(jsonConfig["contactEmailAddress"]);
 const mailHTMLText = ref<string>(`mailto:${contactEmailAddress.value}?subject=問い合わせ&body=問い合わせ内容を記載してください。`);
 
-function createData(): Map<number, Product> {
+function createData(): [Map<number, Product>, ProductLists[]] {
     const data = jsonConfig["product"];
     let newData = new Map<number, Product>();
+    let newLinks: ProductLists[] = [];
 
     let id = 1;
 
@@ -28,13 +29,21 @@ function createData(): Map<number, Product> {
             productLinkText: item.productLinkText,
             productLinkIsBlank: item.productLinkIsBlank,
         });
+        newLinks.push({id: id, name: item.productName});
         id++;
     }
-    return newData;
+    return [newData, newLinks];
 }
 
-const productList = createData();
+const [productList, productLinks] = createData();
 const productDataRef = ref(productList);
+
+const smoothScroll = (elementId: string): void => {
+    const element = document.getElementById(elementId) as HTMLElement;
+    if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+    }
+}
 </script>
 
 <template>
@@ -49,10 +58,15 @@ const productDataRef = ref(productList);
                     <img id="main-image" :src="pageImage" alt="">
                 </div>
             </div>
+            <div class="product-header-link">
+                <ul v-for="link in productLinks">
+                    <a :href="`#card-${link.id}-${link.name}`">{{ link.name }}</a>
+                </ul>
+            </div>
             <div v-for="[index, card] in productDataRef"
                 v-bind:key="index"
                 :class="['card', { 'slide-right': index % 2 === 0, 'slide-left': index % 2 !== 0 }]"
-                :id="`card-${index}`">
+                :id="`card-${index}-${card.productName}`">
                 <div class="card-title-image">
                     <h3 class="card-title">{{ card.productName}}</h3>
                     <img :src="card.imageUrl" :alt="card.productName">
@@ -165,7 +179,6 @@ const productDataRef = ref(productList);
     }
 }
 
-
 #image-zone {
     position: relative;
     overflow: hidden;
@@ -182,11 +195,46 @@ const productDataRef = ref(productList);
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.product-header-link {
+    max-width: 95%;
+    display: flex; 
+    margin: 30px auto;
+    border-radius: 20px;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer / Edge */
+    white-space: nowrap;
+}
+
+.product-header-link::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.product-header-link ul {
+    align-items: center;
+}
+
+.product-header-link li {
+    list-style: none;
+}
+
+.product-header-link a {
+    text-decoration: none;
+    color: #747474;
+}
+
+.product-header-link a:hover {
+    color: #c0ab72;
+    border-bottom: 2px solid #d4bc7a;
+}
+
 .card {
     width: 100%;
     border-radius: 8px;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    scroll-margin-top: 100px;
 }
 
 .card-title {
@@ -210,10 +258,6 @@ const productDataRef = ref(productList);
 }
 
 @media (min-width: 768px) {
-    #card-1 {
-        margin-top: 200px;
-    }
-
     .card.slide-left {
         display: flex;
         height: auto;
@@ -251,15 +295,15 @@ const productDataRef = ref(productList);
         font-size: 1.4em;
         text-align: center;
     }
+
+    .product-header-link a {
+        font-size: 1.2em;
+    }
 }
 
 @media (max-width: 768px) {
     .message-zone {
         font-size: 0.9em;
-    }
-
-    #card-1 {
-        margin-top: 150px;
     }
 
     .card {
@@ -294,6 +338,10 @@ const productDataRef = ref(productList);
     .card-li {
         font-size: 0.9em;
         text-align: center;
+    }
+
+    .product-header-link a {
+        font-size: 1.1em;
     }
 }
 </style>

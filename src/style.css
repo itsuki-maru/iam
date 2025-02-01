@@ -1,6 +1,6 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --text-base-color: #213547;
+    --text-base-color: #16232e;
     --background-color: #ffffff;
     --text-a-link-color: #12145a;
     --input-text-texaarea-color: #000000;
@@ -31,7 +31,7 @@
 }
 
 [data-theme="light"] {
-  --text-base-color: #213547;
+  --text-base-color: #16232e;
   --background-color: #ffffff;
   --text-a-link-color: #12145a;
   --input-text-texaarea-color: #000000;
@@ -57,6 +57,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  overflow: scroll;
+  scroll-behavior: smooth;
 }
 
 body {

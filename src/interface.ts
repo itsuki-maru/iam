@@ -51,4 +51,9 @@ interface ContactFormField {
     selects: string[],
 }
 
-export type { Headers, Product, List, About, Checks, ContactFormField };
+interface ProductLists {
+    id: number,
+    name: string,
+}
+
+export type { Headers, Product, List, About, Checks, ContactFormField, ProductLists };
