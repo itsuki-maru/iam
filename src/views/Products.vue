@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import type { Product, ProductLists } from "@/interface";
 import { jsonConfig } from "@/config";
 
@@ -44,6 +44,21 @@ const smoothScroll = (elementId: string): void => {
         element.scrollIntoView({ behavior: "smooth" });
     }
 }
+
+const showScrollBtn = ref(false);
+onMounted(() => {
+    document.addEventListener("scroll", () => {
+        let scrollPosition = window.scrollY;
+        let targetElement = document.getElementById("card-1");
+        if (targetElement) {
+            if (scrollPosition >= targetElement.offsetTop) {
+                showScrollBtn.value = true;
+            } else {
+                showScrollBtn.value = false;
+            }
+        }
+    });
+});
 </script>
 
 <template>
@@ -58,15 +73,24 @@ const smoothScroll = (elementId: string): void => {
                     <img id="main-image" :src="pageImage" alt="">
                 </div>
             </div>
-            <div class="product-header-link">
+            <div id="product-header-link">
                 <ul v-for="link in productLinks">
-                    <a :href="`#card-${link.id}-${link.name}`">{{ link.name }}</a>
+                    <a :href="`#card-${link.id}`">{{ link.name }}</a>
                 </ul>
             </div>
+            <transition>
+                <div id="util-btn" v-show="showScrollBtn">
+                    <button
+                        id="scroll-to-product-header-link-btn"
+                        v-on:click="smoothScroll('product-header-link')">
+                        ↑
+                    </button>
+                </div>
+            </transition>
             <div v-for="[index, card] in productDataRef"
                 v-bind:key="index"
                 :class="['card', { 'slide-right': index % 2 === 0, 'slide-left': index % 2 !== 0 }]"
-                :id="`card-${index}-${card.productName}`">
+                :id="`card-${index}`">
                 <div class="card-title-image">
                     <h3 class="card-title">{{ card.productName}}</h3>
                     <img :src="card.imageUrl" :alt="card.productName">
@@ -105,6 +129,15 @@ const smoothScroll = (elementId: string): void => {
     .card-body {
         color: #213547;
     }
+
+    #scroll-to-product-header-link-btn {
+        color: #1a1a1a;
+        background-color: #e3e3e3;
+    }
+    
+    #scroll-to-product-header-link-btn:hover {
+        background-color: #cdcdcd;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -128,6 +161,15 @@ const smoothScroll = (elementId: string): void => {
 
     .card-body {
         color: #ccc;
+    }
+
+    #scroll-to-product-header-link-btn {
+        color: #f0f0f0;
+        background-color: #313131;
+    }
+    
+    #scroll-to-product-header-link-btn:hover {
+        background-color: #1a1a1a;
     }
 }
 
@@ -153,6 +195,15 @@ const smoothScroll = (elementId: string): void => {
     .card-body {
         color: #213547;
     }
+
+    #scroll-to-product-header-link-btn {
+        color: #1a1a1a;
+        background-color: #e3e3e3;
+    }
+    
+    #scroll-to-product-header-link-btn:hover {
+        background-color: #cdcdcd;
+    }
 }
 
 [data-theme="dark"] {
@@ -177,6 +228,25 @@ const smoothScroll = (elementId: string): void => {
     .card-body {
         color: #ccc;
     }
+
+    #scroll-to-product-header-link-btn {
+        color: #f0f0f0;
+        background-color: #313131;
+    }
+    
+    #scroll-to-product-header-link-btn:hover {
+        background-color: #1a1a1a;
+    }
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: all 0.3s ease-in-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
 }
 
 #image-zone {
@@ -195,8 +265,8 @@ const smoothScroll = (elementId: string): void => {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.product-header-link {
-    max-width: 95%;
+#product-header-link {
+    max-width: 90%;
     display: flex; 
     margin: 30px auto;
     border-radius: 20px;
@@ -204,28 +274,53 @@ const smoothScroll = (elementId: string): void => {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer / Edge */
     white-space: nowrap;
+    scroll-margin-top: 450px;
 }
 
-.product-header-link::-webkit-scrollbar {
+#product-header-link::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 
-.product-header-link ul {
+#product-header-link ul {
     align-items: center;
 }
 
-.product-header-link li {
+#product-header-link li {
     list-style: none;
 }
 
-.product-header-link a {
+#product-header-link a {
     text-decoration: none;
     color: #747474;
 }
 
-.product-header-link a:hover {
+#product-header-link a:hover {
     color: #c0ab72;
     border-bottom: 2px solid #d4bc7a;
+}
+
+#util-btn {
+    z-index: 1;
+    position: fixed;
+}
+
+#scroll-to-product-header-link-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: ridge 0.5px #a9a9a9;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card {
@@ -299,6 +394,11 @@ const smoothScroll = (elementId: string): void => {
     .product-header-link a {
         font-size: 1.2em;
     }
+
+    #util-btn {
+        top: 50%;
+        right: 1%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -342,6 +442,11 @@ const smoothScroll = (elementId: string): void => {
 
     .product-header-link a {
         font-size: 1.1em;
+    }
+
+    #util-btn {
+        bottom: 30%;
+        left: 10%;
     }
 }
 </style>
