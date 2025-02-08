@@ -69,7 +69,7 @@ const toggleList = (category: string) => {
     }
     
     .list-category .list-list li {
-        background-color: #efefef;
+        background-color: #dadada;
     }
 }
 
@@ -98,7 +98,7 @@ const toggleList = (category: string) => {
     }
     
     .list-category .list-list li {
-        background-color: #efefef;
+        background-color: #dadada;
     }
 }
 

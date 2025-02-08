@@ -123,11 +123,15 @@ onMounted(() => {
     }
 
     .card-title {
-        color: #213547;
+        color: #000000;
     }
 
     .card-body {
-        color: #213547;
+        color: #000000;
+    }
+
+    #product-header-link a {
+        color: #333333;
     }
 
     #scroll-to-product-header-link-btn {
@@ -163,6 +167,10 @@ onMounted(() => {
         color: #ccc;
     }
 
+    #product-header-link a {
+        color: #747474;
+    }
+
     #scroll-to-product-header-link-btn {
         color: #f0f0f0;
         background-color: #313131;
@@ -189,11 +197,15 @@ onMounted(() => {
     }
 
     .card-title {
-        color: #213547;
+        color: #000000;
     }
 
     .card-body {
-        color: #213547;
+        color: #000000;
+    }
+
+    #product-header-link a {
+        color: #333333;
     }
 
     #scroll-to-product-header-link-btn {
@@ -227,6 +239,10 @@ onMounted(() => {
 
     .card-body {
         color: #ccc;
+    }
+
+    #product-header-link a {
+        color: #747474;
     }
 
     #scroll-to-product-header-link-btn {

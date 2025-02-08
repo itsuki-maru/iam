@@ -42,6 +42,30 @@ const head5IsShow = ref<boolean>(headersData.value["head5"]["isShow"]);
 </template>
 
 <style scoped>
+@media (prefers-color-scheme: light) {
+  .nav-menu a {
+    color: #333333;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .nav-menu a {
+    color: #747474;
+  }
+}
+
+[data-theme="light"] {
+  .nav-menu a {
+    color: #333333;
+  }
+}
+
+[data-theme="dark"] {
+  .nav-menu a {
+    color: #747474;
+  }
+}
+
 .nav-menu {
   text-align: center;
 }
@@ -64,7 +88,6 @@ const head5IsShow = ref<boolean>(headersData.value["head5"]["isShow"]);
 
 .nav-menu a {
   text-decoration: none;
-  color: #747474;
 }
 
 .nav-menu a:hover {
