@@ -131,7 +131,7 @@ const toggleList = (category: string) => {
 }
 
 .list-category {
-    margin: 10px 0;
+    margin: 8px 0;
     display: flex;
     flex-direction: column;
 }

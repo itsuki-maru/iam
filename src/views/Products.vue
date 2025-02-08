@@ -109,7 +109,7 @@ onMounted(() => {
 <style scoped>
 @media (prefers-color-scheme: light) {
     .card {
-        box-shadow: 0 4px 8px #e7e7e7;
+        box-shadow: 0 4px 8px #a3a3a3;
         background-color: #f3f3f3;
     }
 
@@ -118,8 +118,8 @@ onMounted(() => {
     }
 
     .card img {
-        border: 1px solid #5f5f5f;
-        box-shadow: 3px 3px 5px 0 rgba(197, 197, 197, 0.5);
+        border: 1px solid #cccccc;
+        box-shadow: 0 4px 8px #a3a3a3;
     }
 
     .card-title {
@@ -183,7 +183,7 @@ onMounted(() => {
 
 [data-theme="light"] {
     .card {
-        box-shadow: 0 4px 8px #e7e7e7;
+        box-shadow: 0 4px 8px #a3a3a3;
         background-color: #f3f3f3;
     }
 
@@ -192,8 +192,8 @@ onMounted(() => {
     }
 
     .card img {
-        border: 1px solid #5f5f5f;
-        box-shadow: 3px 3px 5px 0 rgba(197, 197, 197, 0.5);
+        border: 1px solid #cccccc;
+        box-shadow: 0 4px 8px #a3a3a3;
     }
 
     .card-title {
@@ -272,7 +272,7 @@ onMounted(() => {
 }
 
 #main-image {
-    opacity: 0.4;
+    opacity: 0.7;
     max-width: 1080px;
     height: auto;
     border-radius: 8px;
@@ -362,6 +362,7 @@ onMounted(() => {
     margin: 20px auto;
     border-radius: 3px;
     max-width: 100%;
+    opacity: 0.8;
 }
 
 .card-body {

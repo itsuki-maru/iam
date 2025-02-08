@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     --text-base-color: #030405;
-    --background-color: #f5f5f5f5;
+    --background-color: #ececec;
     --text-a-link-color: #12145a;
     --input-text-texaarea-color: #000000;
     --input-text-texaarea-background-color: #ffffff;
@@ -32,7 +32,7 @@
 
 [data-theme="light"] {
   --text-base-color: #030405;
-  --background-color: #f5f5f5f5;
+  --background-color: #ececec;
   --text-a-link-color: #4549cc;
   --input-text-texaarea-color: #000000;
   --input-text-texaarea-background-color: #ffffff;

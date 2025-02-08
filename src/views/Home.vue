@@ -37,7 +37,7 @@ const pageImage = ref<string>(homeData["imageUrl"]);
 }
 
 #main-image {
-    opacity: 0.5;
+    opacity: 0.7;
     max-width: 300px;
     height: auto;
     border-radius: 8px;
