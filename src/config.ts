@@ -1,15 +1,22 @@
+type OnlyOneTrue<T, K extends keyof T> = {
+    [P in keyof T]: P extends K ? T[P] & { isHome: true } : T[P] & { isHome: false };
+};
+
 interface HeadChild {
     title: string,
     isShow: boolean,
+    isHome?: boolean,
 }
 
-interface Headers {
+interface HeadersBase {
     head1: HeadChild,
     head2: HeadChild,
     head3: HeadChild,
     head4: HeadChild,
     head5: HeadChild,
 }
+
+type Headers = OnlyOneTrue<HeadersBase, keyof HeadersBase>;
 
 interface Home {
     title: string,
@@ -75,6 +82,7 @@ interface JsonConfig {
     appTitle: string,
     appLogo: string,
     contactEmailAddress: string,
+    theme: "dark" | "light" | "user",
     headers: Headers,
     home: Home,
     product: Product,

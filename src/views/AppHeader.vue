@@ -21,6 +21,16 @@ const head4IsShow = ref<boolean>(headersData.value["head4"]["isShow"]);
 
 const head5Title = ref<string>(headersData.value["head5"]["title"]);
 const head5IsShow = ref<boolean>(headersData.value["head5"]["isShow"]);
+
+const boolList: boolean[] = [
+  head1IsShow.value,
+  head2IsShow.value,
+  head3IsShow.value,
+  head4IsShow.value,
+  head5IsShow.value,
+]
+
+const countTrue = boolList.filter(value => value).length;
 </script>
 
 <template>
@@ -28,7 +38,7 @@ const head5IsShow = ref<boolean>(headersData.value["head5"]["isShow"]);
     <header>
         <div class="nav-menu">
             <h1 class="logo">{{ appTitle }}</h1>
-            <nav>
+            <nav v-if="countTrue >= 2">
                 <ul>
                     <li v-if="head1IsShow"><RouterLink active-class="active-tab" to="/home">{{ head1Title }}</RouterLink></li>
                     <li v-if="head2IsShow"><RouterLink active-class="active-tab" to="/product">{{ head2Title }}</RouterLink></li>

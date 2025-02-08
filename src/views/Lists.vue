@@ -61,7 +61,9 @@ const toggleList = (category: string) => {
 <style scoped>
 @media (prefers-color-scheme: light) {
     .list-category button {
+        color: #1a1a1a;
         background-color: #e3e3e3;
+        border: 1px solid #acacac;
     }
     
     .list-category button:hover {
@@ -75,7 +77,9 @@ const toggleList = (category: string) => {
 
 @media (prefers-color-scheme: dark) {
     .list-category button {
+        color: #f0f0f0;
         background-color: #313131;
+        border: 1px solid #acacac;
     }
     
     .list-category button:hover {
@@ -91,6 +95,7 @@ const toggleList = (category: string) => {
     .list-category button {
         color: #1a1a1a;
         background-color: #e3e3e3;
+        border: 1px solid #acacac;
     }
     
     .list-category button:hover {
@@ -106,6 +111,7 @@ const toggleList = (category: string) => {
     .list-category button {
         color: #f0f0f0;
         background-color: #313131;
+        border: 1px solid #acacac;
     }
     
     .list-category button:hover {

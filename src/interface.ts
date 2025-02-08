@@ -9,6 +9,7 @@ interface Headers {
 interface HeadChild {
     title: string,
     isShow: boolean,
+    isHome?: boolean,
 }
 
 interface Product {
@@ -56,4 +57,4 @@ interface ProductLists {
     name: string,
 }
 
-export type { Headers, Product, List, About, Checks, ContactFormField, ProductLists };
+export type { Headers, HeadChild, Product, List, About, Checks, ContactFormField, ProductLists };

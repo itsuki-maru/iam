@@ -188,7 +188,7 @@ label {
 input, textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #acacac;
     border-radius: 4px;
     font-size: 14px;
     transition: border 0.3s, box-shadow 0.3s;

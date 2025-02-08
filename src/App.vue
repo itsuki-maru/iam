@@ -2,6 +2,7 @@
 import AppHeader from "./views/AppHeader.vue";
 import AppFooter from "./views/AppFooter.vue";
 import { useRouter } from 'vue-router';
+import type { Headers, HeadChild } from "@/interface";
 import { ref, onMounted } from 'vue';
 import { jsonConfig } from "./config";
 
@@ -9,16 +10,39 @@ import { jsonConfig } from "./config";
 const appTitle = ref<string>(jsonConfig["appTitle"]);
 const appLogo = ref<string>(jsonConfig["appLogo"]);
 
+const redirectInit = ref<string>("/home");
+const headersData = jsonConfig["headers"];
+const headerToPath = {
+  "head1": "/home",
+  "head2": "/product",
+  "head3": "/list",
+  "head4": "/about",
+  "head5": "/contact",
+};
+
+const findHoisHomeKey = (headers: Headers): keyof Headers => {
+    return (Object.entries(headers) as [keyof Headers, HeadChild][])
+        .find(([_, value]) => value.isHome)?.[0] ?? "head1";
+};
+redirectInit.value = headerToPath[findHoisHomeKey(headersData)];
+
+const appTheme = jsonConfig["theme"];
+
+const isUserThemeChange = ref<boolean>(false);
+if (appTheme === "user") {
+  isUserThemeChange.value = true;
+}
+
 const router = useRouter();
-const homeRedirect = (): void => {
-    router.push("/home");
+const redirectPath = (): void => {
+    router.push(redirectInit.value);
 };
 
 const showSplashScreen = ref(true);
 onMounted(() => {
     setTimeout(() => {
         showSplashScreen.value = false;
-        homeRedirect();
+        redirectPath();
     }, 1800);
 });
 
@@ -51,7 +75,7 @@ onMounted(() => {
     <h1 id="splash-title">{{ appTitle }}</h1>
   </div>
 
-  <div id="theme-change-btn">
+  <div id="theme-change-btn" v-show="isUserThemeChange">
     <img
         v-if="theme === 'dark'"
         src="/light.png"

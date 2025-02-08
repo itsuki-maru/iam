@@ -140,10 +140,13 @@ iam
     - 他のリソースも指定可能です。
     - プロジェクトディレクトリのpublic配下に保存した際は`/your-image-name.png`と指定します。
 - **contactEmailAddress:** 問い合わせ用のメールアドレス設定
+- **theme**: dark, light, user のいずれかを指定します。userを指定するとクライアントで変更可能になります。
 - **headers:** サイトヘッダータブリンク
     - head1:
         - **title**: head1ヘッダーリンクのタイトル
         - **isShow**: true か false （有効化するか否か）
+        - **isHome**: 最初にリダイレクトさせたいヘッダー
+            - デフォルト（全てfalse）で `/home` にリダイレクト
     - head2~head4: 以降同様
 
 ```json
@@ -151,26 +154,32 @@ iam
     "appTitle": "サイト全体のタイトル",
     "appLogo": "/logo.png",
     "contactEmailAddress": "example@example.com",
+    "theme": "dark",
     "headers": {
         "head1": {
             "title": "タイトル1",
-            "isShow": true
+            "isShow": false,
+            "isHome": false
         },
         "head2": {
             "title": "タイトル2",
-            "isShow": true
+            "isShow": true,
+            "isHome": false
         },
         "head3": {
             "title": "タイトル3",
-            "isShow": true
+            "isShow": false,
+            "isHome": false
         },
         "head4": {
             "title": "タイトル4",
-            "isShow": true
+            "isShow": false,
+            "isHome": false
         },
         "head5": {
             "title": "タイトル5",
-            "isShow": true
+            "isShow": false,
+            "isHome": false
         }
     },
 ```
@@ -363,23 +372,28 @@ iam
     "headers": {
         "head1": {
             "title": "タイトル1",
-            "isShow": true
+            "isShow": true,
+            "isHome": false
         },
         "head2": {
             "title": "タイトル2",
-            "isShow": true
+            "isShow": true,
+            "isHome": false
         },
         "head3": {
             "title": "タイトル3",
-            "isShow": true
+            "isShow": true,
+            "isHome": false
         },
         "head4": {
             "title": "タイトル4",
-            "isShow": true
+            "isShow": true,
+            "isHome": false
         },
         "head5": {
             "title": "タイトル5",
-            "isShow": true
+            "isShow": true,
+            "isHome": false
         }
     },
     "home": {
