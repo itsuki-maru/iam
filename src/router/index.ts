@@ -1,5 +1,10 @@
+import type { Headers } from "@/interface";
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
+import { jsonConfig } from "@/config";
+
+const headersData: Headers = jsonConfig["headers"];
+const appTitle: string = jsonConfig["appTitle"];
 
 const routeSettings: RouteRecordRaw[] = [
     {
@@ -7,6 +12,9 @@ const routeSettings: RouteRecordRaw[] = [
         name: "top",
         component: () => {
             return import("@/views/AppTop.vue");
+        },
+        beforeEnter: () => {
+            document.title = appTitle;
         }
     },
     {
@@ -14,6 +22,9 @@ const routeSettings: RouteRecordRaw[] = [
         name: "home",
         component: () => {
             return import("@/views/Home.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head1"]["title"];
         }
     },
     {
@@ -21,6 +32,9 @@ const routeSettings: RouteRecordRaw[] = [
         name: "product",
         component: () => {
             return import("@/views/Products.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head2"]["title"];
         }
     },
     {
@@ -28,6 +42,9 @@ const routeSettings: RouteRecordRaw[] = [
         name: "list",
         component: () => {
             return import("@/views/Lists.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head3"]["title"];
         }
     },
     {
@@ -35,6 +52,9 @@ const routeSettings: RouteRecordRaw[] = [
         name: "about",
         component: () => {
             return import("@/views/About.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head4"]["title"];
         }
     },
     {
@@ -42,6 +62,9 @@ const routeSettings: RouteRecordRaw[] = [
         name: "contact",
         component: () => {
             return import("@/views/Contact.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head5"]["title"];
         }
     },
 ];
