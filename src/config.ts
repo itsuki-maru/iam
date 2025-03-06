@@ -14,6 +14,7 @@ interface HeadersBase {
     head3: HeadChild,
     head4: HeadChild,
     head5: HeadChild,
+    head6: HeadChild,
 }
 
 type Headers = OnlyOneTrue<HeadersBase, keyof HeadersBase>;
@@ -78,6 +79,23 @@ interface Contact {
     form: Form[],
 }
 
+interface BlogItems {
+    title: string,
+    link: string,
+    thumbnailUrl: string,
+    isExternal: boolean,
+}
+
+interface BlogChild {
+    name: string,
+    blogs: BlogItems[],
+}
+
+interface Blog {
+    title: string,
+    abouts: BlogChild[],
+}
+
 interface JsonConfig {
     appTitle: string,
     appLogo: string,
@@ -89,6 +107,7 @@ interface JsonConfig {
     list: List,
     about: About,
     contact: Contact,
+    blog: Blog,
 }
 
 declare const __APP_CONFIG__: JsonConfig;

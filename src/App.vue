@@ -18,6 +18,7 @@ const headerToPath = {
   "head3": "/list",
   "head4": "/about",
   "head5": "/contact",
+  "head6": "/blog",
 };
 
 const findHoisHomeKey = (headers: Headers): keyof Headers => {

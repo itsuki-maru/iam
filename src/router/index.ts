@@ -67,6 +67,16 @@ const routeSettings: RouteRecordRaw[] = [
             document.title = headersData["head5"]["title"];
         }
     },
+    {
+        path: "/blog",
+        name: "blog",
+        component: () => {
+            return import("@/views/Blog.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head6"]["title"];
+        }
+    },
 ];
 
 const router = createRouter({

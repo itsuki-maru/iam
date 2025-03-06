@@ -22,12 +22,16 @@ const head4IsShow = ref<boolean>(headersData.value["head4"]["isShow"]);
 const head5Title = ref<string>(headersData.value["head5"]["title"]);
 const head5IsShow = ref<boolean>(headersData.value["head5"]["isShow"]);
 
+const head6Title = ref<string>(headersData.value["head6"]["title"]);
+const head6IsShow = ref<boolean>(headersData.value["head6"]["isShow"]);
+
 const boolList: boolean[] = [
   head1IsShow.value,
   head2IsShow.value,
   head3IsShow.value,
   head4IsShow.value,
   head5IsShow.value,
+  head6IsShow.value,
 ]
 
 const countTrue = boolList.filter(value => value).length;
@@ -45,6 +49,7 @@ const countTrue = boolList.filter(value => value).length;
                     <li v-if="head3IsShow"><RouterLink active-class="active-tab" to="/list">{{ head3Title }}</RouterLink></li>
                     <li v-if="head4IsShow"><RouterLink active-class="active-tab" to="/about">{{ head4Title }}</RouterLink></li>
                     <li v-if="head5IsShow"><RouterLink active-class="active-tab" to="/contact">{{ head5Title }}</RouterLink></li>
+                    <li v-if="head6IsShow"><RouterLink active-class="active-tab" to="/blog">{{ head6Title }}</RouterLink></li>
                 </ul>
             </nav>
         </div>
