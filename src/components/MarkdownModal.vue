@@ -21,8 +21,8 @@ defineExpose({
 <template>
     <transition>
         <div id="overlay-markdown" v-show="showModalContent">
-            <div id="content-markdown" class="content-markdown">
-                <MarkdownRender :url="mdUrl"/>
+            <div id="content-markdown">
+                <MarkdownRender :url="mdUrl" class="content-markdown"/>
                 <button class="fullscreen-close-btn" v-on:click="handleOpenMarkdownModal('')">閉じる</button>
             </div>
         </div>
@@ -58,7 +58,7 @@ defineExpose({
     z-index: 11;
     width: 100%;
     height: 95vh;
-    padding: 6em;
+    padding: 35em;
     background: #f1f1f1;
     border-radius: 10px;
     overflow: scroll;
@@ -66,11 +66,15 @@ defineExpose({
     color: #000000;
 }
 
+.content-markdown {
+    width: 100%;
+}
+
 .fullscreen-close-btn {
     z-index: 12;
     position: fixed;
     bottom: 5%;
-    left: 2%;
+    right: 2%;
 }
 
 @media (max-width: 768px) {
