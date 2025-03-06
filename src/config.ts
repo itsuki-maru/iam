@@ -81,19 +81,15 @@ interface Contact {
 
 interface BlogItems {
     title: string,
+    date: string,
     link: string,
     thumbnailUrl: string,
     isExternal: boolean,
 }
 
-interface BlogChild {
-    name: string,
-    blogs: BlogItems[],
-}
-
 interface Blog {
     title: string,
-    abouts: BlogChild[],
+    blogs: BlogItems[],
 }
 
 interface JsonConfig {
@@ -106,8 +102,8 @@ interface JsonConfig {
     product: Product,
     list: List,
     about: About,
-    contact: Contact,
     blog: Blog,
+    contact: Contact,
 }
 
 declare const __APP_CONFIG__: JsonConfig;

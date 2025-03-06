@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import type { Blog } from "@/interface";
+import type { BlogItems } from "@/interface";
 import { jsonConfig } from "@/config";
 import MarkdownModal from "@/components/MarkdownModal.vue";
 
@@ -8,15 +8,16 @@ import MarkdownModal from "@/components/MarkdownModal.vue";
 const titleData = jsonConfig["blog"];
 const pageTitle = ref<string>(titleData["title"]);
 
-function createData(): Map<number, Blog> {
+function createData(): Map<number, BlogItems> {
     const data = jsonConfig["blog"];
-    let newData = new Map<number, Blog>();
+    let newData = new Map<number, BlogItems>();
     let id = 1;
 
     for (let item of data["blogs"]) {
         newData.set(id, {
             id: id,
             title: item["title"],
+            date: item["date"],
             link: item["link"],
             thumbnailUrl: item["thumbnailUrl"],
             isExternal: item["isExternal"],
@@ -27,8 +28,14 @@ function createData(): Map<number, Blog> {
 }
 
 const blogList = createData();
-
 const blogListRef = ref(blogList);
+
+const markdownRef = ref<{ handleOpenMarkdownModal: (url: string) => void } | null>(null);
+const childFunction = (url: string) => {
+    if (markdownRef.value) {
+        markdownRef.value.handleOpenMarkdownModal(url);
+    }
+}
 </script>
 
 <template>
@@ -37,18 +44,28 @@ const blogListRef = ref(blogList);
         <div class="container">
             <h2>{{ pageTitle }}</h2>
             <div class="blog-cards">
-                <div v-for="[number, items] in blogListRef" :key="items.id" class="card" :title="items.title">
+                <div v-for="[_, items] in blogListRef" :key="items.id" class="card" :title="items.title">
                     <a v-if="items.isExternal" :href="items.link" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: black;">
                         <h3 class="card-title">{{ items.title }}</h3>
+                        <h4 class="card-date">{{ items.date }}</h4>
                         <img :src="`${items.thumbnailUrl}`" alt="サムネイル">
                     </a>
-                    <a v-else :href="items.link">
+                    <a v-else v-on:click="childFunction(items.link)" style="text-decoration: none; color: black;">
                         <h3 class="card-title">{{ items.title }}</h3>
+                        <h4 class="card-date">{{ items.date }}</h4>
                         <img :src="`${items.thumbnailUrl}`" alt="サムネイル">
                     </a>
                 </div>
             </div>
         </div>
+
+        <div class="markdown-modal">
+            <MarkdownModal ref="markdownRef"/>
+        </div>
+    </section>
+
+    <section>
+
     </section>
 </template>
 
@@ -133,7 +150,7 @@ th, td {
 
 .blog-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-gap: 10px;
     max-width: 80%;
     justify-content: center;
@@ -152,10 +169,14 @@ th, td {
 .card-title {
     white-space: nowrap;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1.2em;
     margin: 1;
     text-overflow: ellipsis;
     color: rgb(27, 27, 27);
+}
+
+.card-date {
+    font-size: 0.8em;
 }
 
 .card:hover {

@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref, watch, defineExpose } from "vue";
-import MarkdownRender from "@/components/MarkdownRenderer";
+import MarkdownRender from "@/components/MarkdownRenderer.vue";
 
 const showModalContent = ref<boolean>(false);
-const handleOpenMarkdownModal = (): void => {
+const mdUrl = ref<string>("");
+const handleOpenMarkdownModal = (url: string): void => {
     if (showModalContent.value) {
         showModalContent.value = false;
     } else {
+        mdUrl.value = url;
         showModalContent.value = true;
     }
 }
@@ -18,10 +20,10 @@ defineExpose({
 
 <template>
     <transition>
-        <div id="overlay-markdown" v-show="showQRContent">
-            <div id="content-markdown">
-                <MarkdownRenderer url="/md/first.md"/>
-                <button class="fullscreen-close-btn" v-on:click="handleOpenMarkdownModal()">閉じる</button>
+        <div id="overlay-markdown" v-show="showModalContent">
+            <div id="content-markdown" class="content-markdown">
+                <MarkdownRender :url="mdUrl"/>
+                <button class="fullscreen-close-btn" v-on:click="handleOpenMarkdownModal('')">閉じる</button>
             </div>
         </div>
     </transition>
@@ -39,14 +41,14 @@ defineExpose({
 }
 
 #overlay-markdown {
-    z-index:10;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-color:rgba(0,0,0,0.5);
-    display: flex;;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -56,9 +58,12 @@ defineExpose({
     z-index: 11;
     width: 100%;
     height: 95vh;
-    padding: 1em;
-    background: #444444;
+    padding: 6em;
+    background: #f1f1f1;
     border-radius: 10px;
+    overflow: scroll;
+    text-align: left;
+    color: #000000;
 }
 
 .fullscreen-close-btn {

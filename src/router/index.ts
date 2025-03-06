@@ -58,20 +58,20 @@ const routeSettings: RouteRecordRaw[] = [
         }
     },
     {
-        path: "/contact",
-        name: "contact",
+        path: "/blog",
+        name: "blog",
         component: () => {
-            return import("@/views/Contact.vue");
+            return import("@/views/Blog.vue");
         },
         beforeEnter: () => {
             document.title = headersData["head5"]["title"];
         }
     },
     {
-        path: "/blog",
-        name: "blog",
+        path: "/contact",
+        name: "contact",
         component: () => {
-            return import("@/views/Blog.vue");
+            return import("@/views/Contact.vue");
         },
         beforeEnter: () => {
             document.title = headersData["head6"]["title"];

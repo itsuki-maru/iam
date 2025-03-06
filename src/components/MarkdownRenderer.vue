@@ -10,7 +10,7 @@ watchEffect(async () => {
     try {
         const response = await fetch(props.url);
         const text = await response.text();
-        const value = md.render(text);
+        content.value = md.render(text);
     } catch (error) {
         console.error("Markdown load error.");
         content.value = "Failed to load Markdown.";
@@ -21,3 +21,7 @@ watchEffect(async () => {
 <template>
     <div v-html="content"></div>
 </template>
+
+<style scoped>
+
+</style>

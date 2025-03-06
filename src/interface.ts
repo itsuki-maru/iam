@@ -59,20 +59,17 @@ interface ProductLists {
 }
 
 interface BlogItems {
+    id: number,
     title: string,
+    date: string,
     link: string,
     thumbnailUrl: string,
     isExternal: boolean,
 }
 
-interface BlogChild {
-    name: string,
+interface Blog {
+    title: string,
     blogs: BlogItems[],
 }
 
-interface Blog {
-    title: string,
-    abouts: BlogChild[],
-}
-
-export type { Headers, HeadChild, Product, List, About, Checks, ContactFormField, ProductLists, Blog };
+export type { Headers, HeadChild, Product, List, About, Checks, ContactFormField, ProductLists, Blog, BlogItems };

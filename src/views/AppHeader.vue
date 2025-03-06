@@ -48,8 +48,8 @@ const countTrue = boolList.filter(value => value).length;
                     <li v-if="head2IsShow"><RouterLink active-class="active-tab" to="/product">{{ head2Title }}</RouterLink></li>
                     <li v-if="head3IsShow"><RouterLink active-class="active-tab" to="/list">{{ head3Title }}</RouterLink></li>
                     <li v-if="head4IsShow"><RouterLink active-class="active-tab" to="/about">{{ head4Title }}</RouterLink></li>
-                    <li v-if="head5IsShow"><RouterLink active-class="active-tab" to="/contact">{{ head5Title }}</RouterLink></li>
-                    <li v-if="head6IsShow"><RouterLink active-class="active-tab" to="/blog">{{ head6Title }}</RouterLink></li>
+                    <li v-if="head5IsShow"><RouterLink active-class="active-tab" to="/blog">{{ head5Title }}</RouterLink></li>
+                    <li v-if="head6IsShow"><RouterLink active-class="active-tab" to="/contact">{{ head6Title }}</RouterLink></li>
                 </ul>
             </nav>
         </div>
