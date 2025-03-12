@@ -331,7 +331,54 @@ iam
 }
 ```
 
-### 6. contactタブコンテンツの設定
+### 6. blogタブコンテンツの設定
+
+`/blog` ルーティングではマークダウンファイルを作成し、ブログのように配信設定することが可能です。
+
+![iam_14](./readme-images/iam_14.png)
+
+- **title**: ページのタイトル
+- **blogs**:
+    - **title**: ブログのタイトル
+    - **date**: 日付
+    - **link**: 記事のリンクを指定。マークダウンファイルの場合は `/md/first.md` のように指定する。外部サイトの場合はリンクをそのまま記述する。
+    - **thumbnailUrl**: サムネイル画像のパス。`public` ディレクトリ内に配置することで `/サムネイル.png` のようにパスを記述して表示可能。
+    - **isExternal**: 外部サイトの記事の場合、別タブで開かせるために `true` を設定。マークダウンファイルを使用する場合は `false` を指定。
+
+```json
+"blog": {
+    "title": "ブログ",
+    "blogs": [
+        {
+            "title": "外部記事",
+            "date": "2025年1月3日",
+            "link": "https://maru-world.pages.dev",
+            "thumbnailUrl": "/icon-512x512.png",
+            "isExternal": true
+        },
+        {
+            "title": "自己紹介",
+            "link": "/md/second.md",
+            "date": "2025年1月2日",
+            "thumbnailUrl": "/icon-512x512.png",
+            "isExternal": false
+        },
+        {
+            "title": "はじめての記事",
+            "date": "2025年1月1日",
+            "link": "/md/first.md",
+            "thumbnailUrl": "/icon-512x512.png",
+            "isExternal": false
+        }
+    ]
+},
+```
+
+外部記事の場合は次のようにモーダルが起動する。
+
+![iam_15](./readme-images/iam_15.png)
+
+### 7. contactタブコンテンツの設定
 
 `/contact` ルーティング内のコンテンツで、動的に入力フォームが生成されるタブコンテンツです。
 
@@ -501,6 +548,32 @@ iam
             {
                 "key": "項目2",
                 "value": "内容2"
+            }
+        ]
+    },
+    "blog": {
+        "title": "ブログ",
+        "blogs": [
+            {
+                "title": "外部記事",
+                "date": "2025年1月3日",
+                "link": "https://maru-world.pages.dev",
+                "thumbnailUrl": "/icon-512x512.png",
+                "isExternal": true
+                },
+            {
+                "title": "自己紹介",
+                "link": "/md/second.md",
+                "date": "2025年1月2日",
+                "thumbnailUrl": "/icon-512x512.png",
+                "isExternal": false
+            },
+            {
+                "title": "はじめての記事",
+                "date": "2025年1月1日",
+                "link": "/md/first.md",
+                "thumbnailUrl": "/icon-512x512.png",
+                "isExternal": false
             }
         ]
     },
