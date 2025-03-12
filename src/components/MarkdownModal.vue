@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch, defineExpose } from "vue";
+import { onMounted, ref, watch } from "vue";
 import MarkdownRender from "@/components/MarkdownRenderer.vue";
 
 const showModalContent = ref<boolean>(false);
