@@ -77,8 +77,9 @@
 }
 
 #content-markdown h1 {
-    font-size: 40px;
+    font-size: 46px;
     color: black;
+    text-align: center;
 }
 
 #content-markdown h2 {
