@@ -149,7 +149,7 @@
             },
             {
                 "title": "Second Blog",
-                "link": "/md/second.md",
+                "link": "/second.md",
                 "date": "2025年1月2日",
                 "thumbnailUrl": "/icon-512x512.png",
                 "isExternal": false
@@ -157,7 +157,7 @@
             {
                 "title": "First Blog",
                 "date": "2025年1月1日",
-                "link": "/md/first.md",
+                "link": "/first.md",
                 "thumbnailUrl": "/icon-512x512.png",
                 "isExternal": false
             }

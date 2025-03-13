@@ -341,7 +341,7 @@ iam
 - **blogs**:
     - **title**: ブログのタイトル
     - **date**: 日付
-    - **link**: 記事のリンクを指定。マークダウンファイルの場合は `/md/first.md` のように指定する。外部サイトの場合はリンクをそのまま記述する。
+    - **link**: 記事のリンクを指定。マークダウンファイルの場合は `/first.md` のように指定する。外部サイトの場合はリンクをそのまま記述する。
     - **thumbnailUrl**: サムネイル画像のパス。`public` ディレクトリ内に配置することで `/サムネイル.png` のようにパスを記述して表示可能。
     - **isExternal**: 外部サイトの記事の場合、別タブで開かせるために `true` を設定。マークダウンファイルを使用する場合は `false` を指定。
 
@@ -358,7 +358,7 @@ iam
         },
         {
             "title": "自己紹介",
-            "link": "/md/second.md",
+            "link": "/second.md",
             "date": "2025年1月2日",
             "thumbnailUrl": "/icon-512x512.png",
             "isExternal": false
@@ -366,7 +366,7 @@ iam
         {
             "title": "はじめての記事",
             "date": "2025年1月1日",
-            "link": "/md/first.md",
+            "link": "/first.md",
             "thumbnailUrl": "/icon-512x512.png",
             "isExternal": false
         }
@@ -563,7 +563,7 @@ iam
                 },
             {
                 "title": "自己紹介",
-                "link": "/md/second.md",
+                "link": "/second.md",
                 "date": "2025年1月2日",
                 "thumbnailUrl": "/icon-512x512.png",
                 "isExternal": false
@@ -571,7 +571,7 @@ iam
             {
                 "title": "はじめての記事",
                 "date": "2025年1月1日",
-                "link": "/md/first.md",
+                "link": "/first.md",
                 "thumbnailUrl": "/icon-512x512.png",
                 "isExternal": false
             }
@@ -594,7 +594,7 @@ iam
 
 ### 8. 静的ファイル（画像）の取り扱い
 
-使用したい画像をURLリソースではなく、当ツールに含めたい場合は `/public/users` 配下に保存することでGitの監視対象から外すことが可能です。
+使用したい画像をURLリソースではなく、当ツールに含めたい場合は `/public/static` 配下に保存することでGitの監視対象から外すことが可能です。
 
 ## その他
 

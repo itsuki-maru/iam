@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Users
+# static
 .env
 tsconfig.app.tsbuildinfo
 config.json
@@ -31,18 +31,12 @@ config.json
 # Git管理対象の画像ファイル
 /public/*
 !/public/*/
-!/public/dark.png
 !/public/favicon.ico
-!/public/icon-192x192.png
-!/public/icon-512x512.png
-!/public/light.png
-!/public/logo.png
 !/public/manifest.json
-!/public/project-page-top.png
-!/public/project-sample1.png
-!/public/project-sample2.png
-!/public/project-sample3.png
+!/public/*.png
+!/public/*.jpg
+!/public/*.md
 
 # Git管理対象の画像ファイル
-/public/users/*
-!/public/users/README.md
+/public/static/*
+!/public/static/README.md
