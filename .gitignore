@@ -36,6 +36,7 @@ config.json
 !/public/*.png
 !/public/*.jpg
 !/public/*.md
+!/public/*.docx
 
 # Git管理対象の画像ファイル
 /public/static/*

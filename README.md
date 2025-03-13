@@ -407,7 +407,36 @@ iam
 }
 ```
 
-### 7. 設定ファイル全体
+### 8. downloadタブのコンテンツ設定
+
+`/download` ルーティング内のコンテンツで、ファイルダウンロードに使用するタブコンテンツです。
+
+![iam_16](./readme-images/iam_16.png)
+
+#### 設定項目
+
+- **title**: ページのタイトル
+- **items**:
+    - **title**: ファイル名
+    - **title**: ファイルのリンク
+
+```json
+"download": {
+    "title": "ダウンロード",
+    "items": [
+        {
+            "title": "File 1",
+            "link": "/sample.docx"
+        },
+        {
+            "title": "File 2",
+            "link": "/sample.docx"
+        }
+    ]
+}
+```
+
+### 9. 設定ファイル全体
 
 最後に `config.json` の全体像です。
 
@@ -587,6 +616,19 @@ iam
             { "name": "sex", "label": "性別", "placeholder": "性別を選択してください。", "type": "select", "selects": ["男性", "女性", "その他"] },
             { "name": "age", "label": "年齢", "placeholder": "年齢を入力してください。", "type": "number"},
             { "name": "detail", "label": "お問い合わせ内容", "placeholder": "お問い合わせ内容を入力してください。", "type": "textarea" }
+        ]
+    },
+    "download": {
+        "title": "ダウンロード",
+        "items": [
+            {
+                "title": "File 1",
+                "link": "/sample.docx"
+            },
+            {
+                "title": "File 2",
+                "link": "/sample.docx"
+            }
         ]
     }
 }

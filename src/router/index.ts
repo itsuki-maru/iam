@@ -77,6 +77,16 @@ const routeSettings: RouteRecordRaw[] = [
             document.title = headersData["head6"]["title"];
         }
     },
+    {
+        path: "/download",
+        name: "download",
+        component: () => {
+            return import("@/views/Download.vue");
+        },
+        beforeEnter: () => {
+            document.title = headersData["head7"]["title"];
+        }
+    },
 ];
 
 const router = createRouter({

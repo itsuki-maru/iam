@@ -5,6 +5,7 @@ interface Headers {
     head4: HeadChild,
     head5: HeadChild,
     head6: HeadChild,
+    head7: HeadChild,
 }
 
 interface HeadChild {
@@ -72,4 +73,14 @@ interface Blog {
     blogs: BlogItems[],
 }
 
-export type { Headers, HeadChild, Product, List, About, Checks, ContactFormField, ProductLists, Blog, BlogItems };
+interface DownloadItems {
+    title: string,
+    link: string,
+}
+
+interface DownloadItem {
+    title: string,
+    items: DownloadItems[],
+}
+
+export type { Headers, HeadChild, Product, List, About, Checks, ContactFormField, ProductLists, Blog, BlogItems, DownloadItems, DownloadItem };
